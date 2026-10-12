@@ -1,0 +1,16 @@
+# NAME: Perplexity
+# DESC: Perplexity AI
+# FORMAT: Clash rule-provider, behavior: classical
+# UPDATED: 2026-10-12 10:37:32 UTC
+# DOMAIN-SUFFIX: 3
+# DOMAIN: 2
+# DOMAIN-KEYWORD: 0
+# IP-CIDR: 0
+# IP-CIDR6: 0
+# SOURCE: https://github.com/v2fly/domain-list-community, RIPEstat, vendor docs
+payload:
+  - 'DOMAIN-SUFFIX,perplexity.ai'
+  - 'DOMAIN-SUFFIX,pplx.ai'
+  - 'DOMAIN-SUFFIX,perplexity.com'
+  - 'DOMAIN,ppl-ai-file-upload.s3.amazonaws.com'
+  - 'DOMAIN,pplx-res.cloudinary.com'

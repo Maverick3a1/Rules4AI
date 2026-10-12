@@ -1,0 +1,57 @@
+# NAME: Gemini
+# DESC: Google: Gemini, AI Studio, NotebookLM, DeepMind, Jules, Antigravity
+# FORMAT: Clash rule-provider, behavior: domain
+# UPDATED: 2026-10-12 10:37:32 UTC
+# DOMAIN-SUFFIX: 33
+# DOMAIN: 13
+# DOMAIN-KEYWORD: 0
+# IP-CIDR: 0
+# IP-CIDR6: 0
+# SOURCE: https://github.com/v2fly/domain-list-community, RIPEstat, vendor docs
+payload:
+  - '+.deepmind.com'
+  - '+.aistudio.google.com'
+  - '+.bard.google.com'
+  - '+.flow.google.com'
+  - '+.gemini.google.com'
+  - '+.jules.google.com'
+  - '+.labs.google.com'
+  - '+.makersuite.google.com'
+  - '+.notebook.google.com'
+  - '+.notebooklm.google.com'
+  - '+.opal.google.com'
+  - '+.aicode.googleapis.com'
+  - '+.aida.googleapis.com'
+  - '+.aisandbox-pa.googleapis.com'
+  - '+.geller-pa.googleapis.com'
+  - '+.generativelanguage.googleapis.com'
+  - '+.labstailwind.pa.googleapis.com'
+  - '+.proactivebackend-pa.googleapis.com'
+  - '+.robinfrontend-pa.googleapis.com'
+  - '+.gemini.gstatic.com'
+  - '+.stitch.withgoogle.com'
+  - '+.antigravity-unleash.goog'
+  - '+.antigravity.google'
+  - '+.deepmind.google'
+  - '+.flow.google'
+  - '+.gemini.google'
+  - '+.generativeai.google'
+  - '+.jules.google'
+  - '+.labs.google'
+  - '+.notebook.google'
+  - '+.notebooklm.google'
+  - '+.opal.google'
+  - '+.ai.studio'
+  - 'geminiweb-pa.clients.google.com'
+  - 'alkalicore-pa.clients6.google.com'
+  - 'alkalimakersuite-pa.clients6.google.com'
+  - 'geminiweb-pa.clients6.google.com'
+  - 'webchannel-alkalimakersuite-pa.clients6.google.com'
+  - 'antigravity.googleapis.com'
+  - 'antigravity-pa.googleapis.com'
+  - 'cloudaicompanion.googleapis.com'
+  - 'cloudcode-pa.googleapis.com'
+  - 'daily-cloudcode-pa.googleapis.com'
+  - 'notebooklm.googleapis.com'
+  - 'notebooklm-pa.googleapis.com'
+  - 'ai.google.dev'

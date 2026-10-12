@@ -1,0 +1,20 @@
+# NAME: Copilot
+# DESC: Microsoft Copilot and GitHub Copilot
+# FORMAT: Surge RULE-SET
+# UPDATED: 2026-10-12 10:37:33 UTC
+# DOMAIN-SUFFIX: 3
+# DOMAIN: 7
+# DOMAIN-KEYWORD: 0
+# IP-CIDR: 0
+# IP-CIDR6: 0
+# SOURCE: https://github.com/v2fly/domain-list-community, RIPEstat, vendor docs
+DOMAIN-SUFFIX,githubcopilot.com
+DOMAIN-SUFFIX,copilot.microsoft.com
+DOMAIN-SUFFIX,copilot.cloud.microsoft
+DOMAIN,edgeservices.bing.com
+DOMAIN,sydney.bing.com
+DOMAIN,copilot-workspace.githubnext.com
+DOMAIN,copilot-proxy.githubusercontent.com
+DOMAIN,copilot-telemetry.githubusercontent.com
+DOMAIN,copilot-telemetry-service.githubusercontent.com
+DOMAIN,copilotprodattachments.blob.core.windows.net

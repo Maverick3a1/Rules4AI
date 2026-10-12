@@ -1,0 +1,13 @@
+# NAME: MetaAI
+# DESC: Meta AI and Llama
+# FORMAT: Clash rule-provider, behavior: classical
+# UPDATED: 2026-10-12 10:37:33 UTC
+# DOMAIN-SUFFIX: 2
+# DOMAIN: 0
+# DOMAIN-KEYWORD: 0
+# IP-CIDR: 0
+# IP-CIDR6: 0
+# SOURCE: https://github.com/v2fly/domain-list-community, RIPEstat, vendor docs
+payload:
+  - 'DOMAIN-SUFFIX,meta.ai'
+  - 'DOMAIN-SUFFIX,llama.com'

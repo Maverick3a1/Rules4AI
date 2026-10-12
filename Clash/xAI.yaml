@@ -1,0 +1,16 @@
+# NAME: xAI
+# DESC: xAI: Grok, Grok API
+# FORMAT: Clash rule-provider, behavior: classical
+# UPDATED: 2026-10-12 10:37:31 UTC
+# DOMAIN-SUFFIX: 4
+# DOMAIN: 0
+# DOMAIN-KEYWORD: 0
+# IP-CIDR: 1
+# IP-CIDR6: 0
+# SOURCE: https://github.com/v2fly/domain-list-community, RIPEstat, vendor docs
+payload:
+  - 'DOMAIN-SUFFIX,x.ai'
+  - 'DOMAIN-SUFFIX,grok.com'
+  - 'DOMAIN-SUFFIX,grokipedia.com'
+  - 'DOMAIN-SUFFIX,grok.x.com'
+  - 'IP-CIDR,31.207.0.0/24,no-resolve'

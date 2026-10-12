@@ -1,0 +1,21 @@
+# NAME: Copilot
+# DESC: Microsoft Copilot and GitHub Copilot
+# FORMAT: Clash rule-provider, behavior: domain
+# UPDATED: 2026-10-12 10:37:33 UTC
+# DOMAIN-SUFFIX: 3
+# DOMAIN: 7
+# DOMAIN-KEYWORD: 0
+# IP-CIDR: 0
+# IP-CIDR6: 0
+# SOURCE: https://github.com/v2fly/domain-list-community, RIPEstat, vendor docs
+payload:
+  - '+.githubcopilot.com'
+  - '+.copilot.microsoft.com'
+  - '+.copilot.cloud.microsoft'
+  - 'edgeservices.bing.com'
+  - 'sydney.bing.com'
+  - 'copilot-workspace.githubnext.com'
+  - 'copilot-proxy.githubusercontent.com'
+  - 'copilot-telemetry.githubusercontent.com'
+  - 'copilot-telemetry-service.githubusercontent.com'
+  - 'copilotprodattachments.blob.core.windows.net'

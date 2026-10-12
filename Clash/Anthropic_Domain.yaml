@@ -1,0 +1,20 @@
+# NAME: Anthropic
+# DESC: Anthropic: Claude, Claude Code, Claude API
+# FORMAT: Clash rule-provider, behavior: domain
+# UPDATED: 2026-10-12 10:37:29 UTC
+# DOMAIN-SUFFIX: 8
+# DOMAIN: 1
+# DOMAIN-KEYWORD: 0
+# IP-CIDR: 1
+# IP-CIDR6: 2
+# SOURCE: https://github.com/v2fly/domain-list-community, RIPEstat, vendor docs
+payload:
+  - '+.claude.ai'
+  - '+.anthropic.com'
+  - '+.claude.com'
+  - '+.claudemcpclient.com'
+  - '+.claudemcpcontent.com'
+  - '+.claudeusercontent.com'
+  - '+.clau.de'
+  - '+.claude.dev'
+  - 'servd-anthropic-website.b-cdn.net'

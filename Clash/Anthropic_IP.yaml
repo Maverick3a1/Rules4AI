@@ -1,0 +1,14 @@
+# NAME: Anthropic
+# DESC: Anthropic: Claude, Claude Code, Claude API
+# FORMAT: Clash rule-provider, behavior: ipcidr
+# UPDATED: 2026-10-12 10:37:29 UTC
+# DOMAIN-SUFFIX: 8
+# DOMAIN: 1
+# DOMAIN-KEYWORD: 0
+# IP-CIDR: 1
+# IP-CIDR6: 2
+# SOURCE: https://github.com/v2fly/domain-list-community, RIPEstat, vendor docs
+payload:
+  - '160.79.104.0/23'
+  - '2607:6bc0::/48'
+  - '2607:6bc0:11::/48'
