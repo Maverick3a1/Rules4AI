@@ -1,0 +1,148 @@
+// Rules4AI 厂商配置。改完推送到 main，scripts/build.py 会重新生成 Clash/ 和 Surge/。
+// 只支持整行的 // 注释。
+{
+  // ================================================================
+  // 全局设置
+  // ================================================================
+
+  // 拒绝收录的过宽 DOMAIN-SUFFIX（只拦截完全相同的后缀，
+  // 比如 openai.com.cdn.cloudflare.net 不受 cloudflare.net 影响）
+  "global_deny_suffix": [
+    "amazonaws.com",
+    "azure.com",
+    "azureedge.net",
+    "azurefd.net",
+    "bing.com",
+    "cloudflare.com",
+    "cloudflare.net",
+    "cloudfront.net",
+    "core.windows.net",
+    "github.com",
+    "githubusercontent.com",
+    "google.com",
+    "googleapis.com",
+    "gstatic.com",
+    "livekit.cloud",
+    "microsoft.com",
+    "sentry.io",
+    "windows.net",
+    "x.com"
+  ],
+
+  // v2fly 中带这些属性的条目会被丢弃
+  "v2fly_exclude_attrs": ["ads", "cn"],
+
+  "vendors": [
+    // ================================================================
+    // OpenAI：ChatGPT / Sora / Codex / API
+    // ================================================================
+    {
+      "name": "OpenAI",
+      "description": "OpenAI: ChatGPT, Sora, Codex, OpenAI API",
+      "sources": [
+        {"type": "v2fly", "list": "openai"},
+        // OpenAI 自有 ASN（目前没有宣告网段，有了会自动收录）
+        {"type": "asn", "asn": 401864}
+      ],
+      // 替代上游 regexp：chatgpt-async-webps-prod-*.webpubsub.azure.com
+      "domain_keyword": ["chatgpt-async-webps-prod-"]
+    },
+
+    // ================================================================
+    // Anthropic：Claude / Claude Code / API
+    // ================================================================
+    {
+      "name": "Anthropic",
+      "description": "Anthropic: Claude, Claude Code, Claude API",
+      "sources": [
+        {"type": "v2fly", "list": "anthropic"},
+        // Anthropic 自有 ASN
+        {"type": "asn", "asn": 399358},
+        {"type": "asn", "asn": 400243},
+        {"type": "asn", "asn": 401551},
+        // 官方文档中的 Inbound IP 段
+        {"type": "anthropic_docs", "url": "https://platform.claude.com/docs/en/api/ip-addresses"}
+      ],
+      // 官方文档公布的入站 IP，作为兜底
+      "ip_cidr": ["160.79.104.0/23", "2607:6bc0::/48"]
+    },
+
+    // ================================================================
+    // xAI：Grok / API
+    // ================================================================
+    {
+      "name": "xAI",
+      "description": "xAI: Grok, Grok API",
+      "sources": [
+        {"type": "v2fly", "list": "xai"},
+        // xAI 自有 ASN
+        {"type": "asn", "asn": 400297}
+      ]
+    },
+
+    // ================================================================
+    // Google：Gemini / AI Studio / NotebookLM / DeepMind 等
+    // （走 Google 共用网段，不收录 IP）
+    // ================================================================
+    {
+      "name": "Gemini",
+      "description": "Google: Gemini, AI Studio, NotebookLM, DeepMind, Jules, Antigravity",
+      "sources": [
+        {"type": "v2fly", "list": "google-deepmind"}
+      ]
+    },
+
+    // ================================================================
+    // Perplexity
+    // ================================================================
+    {
+      "name": "Perplexity",
+      "description": "Perplexity AI",
+      "sources": [
+        {"type": "v2fly", "list": "perplexity"}
+      ]
+    },
+
+    // ================================================================
+    // Microsoft：Copilot + GitHub Copilot
+    // ================================================================
+    {
+      "name": "Copilot",
+      "description": "Microsoft Copilot and GitHub Copilot",
+      "sources": [
+        // GitHub Copilot
+        {"type": "v2fly", "list": "github-copilot"}
+      ],
+      // Microsoft Copilot（v2fly 没有单独列表，手工维护）
+      "domain_suffix": [
+        "copilot.microsoft.com",
+        "copilot.cloud.microsoft"
+      ],
+      "domain": [
+        "sydney.bing.com",
+        "edgeservices.bing.com"
+      ]
+    },
+
+    // ================================================================
+    // Meta：Meta AI / Llama（v2fly 没有单独列表，手工维护）
+    // ================================================================
+    {
+      "name": "MetaAI",
+      "description": "Meta AI and Llama",
+      "sources": [],
+      "domain_suffix": [
+        "meta.ai",
+        "llama.com"
+      ]
+    }
+  ],
+
+  // ================================================================
+  // 合集：以上所有厂商合并为 AI.list / AI.yaml
+  // ================================================================
+  "aggregate": {
+    "name": "AI",
+    "description": "All vendors above combined"
+  }
+}

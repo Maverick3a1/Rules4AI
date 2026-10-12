@@ -67,7 +67,7 @@ rules:
 | 类型 | 来源 |
 | --- | --- |
 | 域名 | [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community)（`openai`、`anthropic`、`xai`、`google-deepmind`、`perplexity`、`github-copilot`），去掉标记为 `@ads` / `@cn` 的条目 |
-| 域名 | [`config/vendors.json`](config/vendors.json) 中手工维护的补充条目 |
+| 域名 | [`config/vendors.jsonc`](config/vendors.jsonc) 中手工维护的补充条目 |
 | IP | [RIPEstat](https://stat.ripe.net/) 查询各厂商自有 ASN 实际宣告的网段：OpenAI `AS401864`、Anthropic `AS399358` / `AS400243` / `AS401551`、xAI `AS400297` |
 | IP | [Anthropic IP 地址文档](https://platform.claude.com/docs/en/api/ip-addresses) 中的 *Inbound* 段（出站 IP 和已停用的 IP 不收录） |
 
@@ -89,7 +89,7 @@ python3 scripts/build.py
 
 ## 添加厂商或规则
 
-编辑 [`config/vendors.json`](config/vendors.json)：
+编辑 [`config/vendors.jsonc`](config/vendors.jsonc)：
 
 ```jsonc
 {

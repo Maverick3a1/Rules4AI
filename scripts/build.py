@@ -17,7 +17,7 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-CONFIG = ROOT / "config" / "vendors.json"
+CONFIG = ROOT / "config" / "vendors.jsonc"
 CLASH_DIR = ROOT / "Clash"
 SURGE_DIR = ROOT / "Surge"
 README = ROOT / "README.md"
@@ -382,8 +382,14 @@ def update_readme(entries):
 # ---------------------------------------------------------------- main
 
 
+def load_config():
+    """vendors.jsonc is JSON plus full-line // comments."""
+    lines = [l for l in CONFIG.read_text().splitlines() if not l.lstrip().startswith("//")]
+    return json.loads("\n".join(lines))
+
+
 def main():
-    cfg = json.loads(CONFIG.read_text())
+    cfg = load_config()
     CLASH_DIR.mkdir(exist_ok=True)
     SURGE_DIR.mkdir(exist_ok=True)
 
