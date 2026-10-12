@@ -1,7 +1,7 @@
 # NAME: AI
 # DESC: All vendors above combined
 # FORMAT: Clash rule-provider, behavior: ipcidr
-# UPDATED: 2026-10-12 10:37:33 UTC
+# UPDATED: 2026-10-12 10:55:51 UTC
 # DOMAIN-SUFFIX: 66
 # DOMAIN: 29
 # DOMAIN-KEYWORD: 1
@@ -9,7 +9,16 @@
 # IP-CIDR6: 2
 # SOURCE: https://github.com/v2fly/domain-list-community, RIPEstat, vendor docs
 payload:
-  - '31.207.0.0/24'
+  # ============================================================
+  # Anthropic
+  # Anthropic: Claude, Claude Code, Claude API
+  # ============================================================
   - '160.79.104.0/23'
   - '2607:6bc0::/48'
   - '2607:6bc0:11::/48'
+
+  # ============================================================
+  # xAI
+  # xAI: Grok, Grok API
+  # ============================================================
+  - '31.207.0.0/24'

@@ -1,31 +1,70 @@
 # NAME: AI
 # DESC: All vendors above combined
 # FORMAT: Surge RULE-SET
-# UPDATED: 2026-10-12 10:37:33 UTC
+# UPDATED: 2026-10-12 10:55:51 UTC
 # DOMAIN-SUFFIX: 66
 # DOMAIN: 29
 # DOMAIN-KEYWORD: 1
 # IP-CIDR: 2
 # IP-CIDR6: 2
 # SOURCE: https://github.com/v2fly/domain-list-community, RIPEstat, vendor docs
-DOMAIN-SUFFIX,claude.ai
-DOMAIN-SUFFIX,meta.ai
-DOMAIN-SUFFIX,perplexity.ai
-DOMAIN-SUFFIX,pplx.ai
-DOMAIN-SUFFIX,x.ai
+# ============================================================
+# OpenAI
+# OpenAI: ChatGPT, Sora, Codex, OpenAI API
+# ============================================================
 DOMAIN-SUFFIX,chatgpt.livekit.cloud
 DOMAIN-SUFFIX,host.livekit.cloud
 DOMAIN-SUFFIX,turn.livekit.cloud
-DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,chat.com
 DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,crixet.com
+DOMAIN-SUFFIX,oaistatic.com
+DOMAIN-SUFFIX,oaistatsig.com
+DOMAIN-SUFFIX,oaiusercontent.com
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,sora.com
+DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net
+DOMAIN-SUFFIX,chatgpt.site
+DOMAIN,openaiapi-site.azureedge.net
+DOMAIN,production-openaicom-storage.azureedge.net
+DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
+DOMAIN,openaicom.imgix.net
+DOMAIN,openaiassets.blob.core.windows.net
+DOMAIN,openaicomproductionae4b.blob.core.windows.net
+DOMAIN-KEYWORD,chatgpt-async-webps-prod-
+
+# ============================================================
+# Anthropic
+# Anthropic: Claude, Claude Code, Claude API
+# ============================================================
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,claude.com
 DOMAIN-SUFFIX,claudemcpclient.com
 DOMAIN-SUFFIX,claudemcpcontent.com
 DOMAIN-SUFFIX,claudeusercontent.com
-DOMAIN-SUFFIX,crixet.com
+DOMAIN-SUFFIX,clau.de
+DOMAIN-SUFFIX,claude.dev
+DOMAIN,servd-anthropic-website.b-cdn.net
+IP-CIDR,160.79.104.0/23,no-resolve
+IP-CIDR6,2607:6bc0::/48,no-resolve
+IP-CIDR6,2607:6bc0:11::/48,no-resolve
+
+# ============================================================
+# xAI
+# xAI: Grok, Grok API
+# ============================================================
+DOMAIN-SUFFIX,x.ai
+DOMAIN-SUFFIX,grok.com
+DOMAIN-SUFFIX,grokipedia.com
+DOMAIN-SUFFIX,grok.x.com
+IP-CIDR,31.207.0.0/24,no-resolve
+
+# ============================================================
+# Gemini
+# Google: Gemini, AI Studio, NotebookLM, DeepMind, Jules, Antigravity
+# ============================================================
 DOMAIN-SUFFIX,deepmind.com
-DOMAIN-SUFFIX,githubcopilot.com
 DOMAIN-SUFFIX,aistudio.google.com
 DOMAIN-SUFFIX,bard.google.com
 DOMAIN-SUFFIX,flow.google.com
@@ -44,21 +83,8 @@ DOMAIN-SUFFIX,generativelanguage.googleapis.com
 DOMAIN-SUFFIX,labstailwind.pa.googleapis.com
 DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
 DOMAIN-SUFFIX,robinfrontend-pa.googleapis.com
-DOMAIN-SUFFIX,grok.com
-DOMAIN-SUFFIX,grokipedia.com
 DOMAIN-SUFFIX,gemini.gstatic.com
-DOMAIN-SUFFIX,llama.com
-DOMAIN-SUFFIX,copilot.microsoft.com
-DOMAIN-SUFFIX,oaistatic.com
-DOMAIN-SUFFIX,oaistatsig.com
-DOMAIN-SUFFIX,oaiusercontent.com
-DOMAIN-SUFFIX,openai.com
-DOMAIN-SUFFIX,perplexity.com
-DOMAIN-SUFFIX,sora.com
 DOMAIN-SUFFIX,stitch.withgoogle.com
-DOMAIN-SUFFIX,grok.x.com
-DOMAIN-SUFFIX,clau.de
-DOMAIN-SUFFIX,claude.dev
 DOMAIN-SUFFIX,antigravity-unleash.goog
 DOMAIN-SUFFIX,antigravity.google
 DOMAIN-SUFFIX,deepmind.google
@@ -70,18 +96,7 @@ DOMAIN-SUFFIX,labs.google
 DOMAIN-SUFFIX,notebook.google
 DOMAIN-SUFFIX,notebooklm.google
 DOMAIN-SUFFIX,opal.google
-DOMAIN-SUFFIX,copilot.cloud.microsoft
-DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net
-DOMAIN-SUFFIX,chatgpt.site
 DOMAIN-SUFFIX,ai.studio
-DOMAIN,ppl-ai-file-upload.s3.amazonaws.com
-DOMAIN,edgeservices.bing.com
-DOMAIN,sydney.bing.com
-DOMAIN,pplx-res.cloudinary.com
-DOMAIN,copilot-workspace.githubnext.com
-DOMAIN,copilot-proxy.githubusercontent.com
-DOMAIN,copilot-telemetry.githubusercontent.com
-DOMAIN,copilot-telemetry-service.githubusercontent.com
 DOMAIN,geminiweb-pa.clients.google.com
 DOMAIN,alkalicore-pa.clients6.google.com
 DOMAIN,alkalimakersuite-pa.clients6.google.com
@@ -95,16 +110,35 @@ DOMAIN,daily-cloudcode-pa.googleapis.com
 DOMAIN,notebooklm.googleapis.com
 DOMAIN,notebooklm-pa.googleapis.com
 DOMAIN,ai.google.dev
-DOMAIN,openaiapi-site.azureedge.net
-DOMAIN,production-openaicom-storage.azureedge.net
-DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
-DOMAIN,servd-anthropic-website.b-cdn.net
-DOMAIN,openaicom.imgix.net
+
+# ============================================================
+# Perplexity
+# Perplexity AI
+# ============================================================
+DOMAIN-SUFFIX,perplexity.ai
+DOMAIN-SUFFIX,pplx.ai
+DOMAIN-SUFFIX,perplexity.com
+DOMAIN,ppl-ai-file-upload.s3.amazonaws.com
+DOMAIN,pplx-res.cloudinary.com
+
+# ============================================================
+# Copilot
+# Microsoft Copilot and GitHub Copilot
+# ============================================================
+DOMAIN-SUFFIX,githubcopilot.com
+DOMAIN-SUFFIX,copilot.microsoft.com
+DOMAIN-SUFFIX,copilot.cloud.microsoft
+DOMAIN,edgeservices.bing.com
+DOMAIN,sydney.bing.com
+DOMAIN,copilot-workspace.githubnext.com
+DOMAIN,copilot-proxy.githubusercontent.com
+DOMAIN,copilot-telemetry.githubusercontent.com
+DOMAIN,copilot-telemetry-service.githubusercontent.com
 DOMAIN,copilotprodattachments.blob.core.windows.net
-DOMAIN,openaiassets.blob.core.windows.net
-DOMAIN,openaicomproductionae4b.blob.core.windows.net
-DOMAIN-KEYWORD,chatgpt-async-webps-prod-
-IP-CIDR,31.207.0.0/24,no-resolve
-IP-CIDR,160.79.104.0/23,no-resolve
-IP-CIDR6,2607:6bc0::/48,no-resolve
-IP-CIDR6,2607:6bc0:11::/48,no-resolve
+
+# ============================================================
+# MetaAI
+# Meta AI and Llama
+# ============================================================
+DOMAIN-SUFFIX,meta.ai
+DOMAIN-SUFFIX,llama.com

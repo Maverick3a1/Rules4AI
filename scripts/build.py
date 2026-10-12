@@ -123,6 +123,23 @@ class RuleSet:
         self.nets = set(ipaddress.collapse_addresses(v4)) | set(ipaddress.collapse_addresses(v6))
         return self
 
+    def subtract(self, seen):
+        """Copy without entries already covered by `seen` (used for aggregate sections)."""
+
+        def covered(domain):
+            parts = domain.split(".")
+            return any(".".join(parts[i:]) in seen.suffix for i in range(len(parts) - 1))
+
+        out = RuleSet()
+        out.suffix = {d for d in self.suffix if not covered(d)}
+        out.full = {d for d in self.full if d not in seen.full and not covered(d)}
+        out.keyword = self.keyword - seen.keyword
+        out.nets = {
+            n for n in self.nets
+            if not any(n.version == m.version and n.subnet_of(m) for m in seen.nets)
+        }
+        return out
+
     def sorted_domains(self):
         def key(d):
             return list(reversed(d.split(".")))
@@ -249,7 +266,15 @@ def surge_domain_set(rs):
 
 
 def clash_payload(lines):
-    return ["payload:"] + [f"  - '{line}'" for line in lines]
+    out = ["payload:"]
+    for line in lines:
+        if not line:
+            out.append("")
+        elif line.startswith("#"):
+            out.append(f"  {line}")
+        else:
+            out.append(f"  - '{line}'")
+    return out
 
 
 def clash_domain(rs):
@@ -280,16 +305,47 @@ def header(name, description, fmt, rs, comment):
     ]
 
 
+HEADER_RE = re.compile(
+    r"^# (NAME|DESC|FORMAT|UPDATED|DOMAIN-SUFFIX|DOMAIN|DOMAIN-KEYWORD|IP-CIDR|IP-CIDR6|SOURCE): "
+)
+
+
 def body_of(path):
-    """Existing file content without comment header lines (for change detection)."""
+    """Existing file content without the metadata header (for change detection)."""
     if not path.exists():
         return None
-    return [l for l in path.read_text().splitlines() if not l.startswith("#")]
+    return [l for l in path.read_text().splitlines() if not HEADER_RE.match(l)]
+
+
+def is_rule(line):
+    stripped = line.strip()
+    return bool(stripped) and not stripped.startswith("#") and stripped != "payload:"
+
+
+def sectioned(fn, sections):
+    """Render each (name, description, ruleset) section under a comment banner."""
+    if len(sections) == 1 and sections[0][0] is None:
+        return fn(sections[0][2])
+    out = []
+    for name, description, part in sections:
+        lines = fn(part)
+        if not lines:
+            continue
+        if out:
+            out.append("")
+        out += [
+            "# " + "=" * 60,
+            f"# {name}",
+            f"# {description}",
+            "# " + "=" * 60,
+        ]
+        out += lines
+    return out
 
 
 def write_if_changed(path, head, body):
     """Rewrite only when rules changed, so the UPDATED stamp means something."""
-    if not body or body == ["payload:"]:
+    if not any(is_rule(l) for l in body):
         if path.exists():
             path.unlink()
             log(f"  removed {path.relative_to(ROOT)} (empty)")
@@ -300,38 +356,26 @@ def write_if_changed(path, head, body):
     log(f"  wrote {path.relative_to(ROOT)} ({len(body)} lines)")
 
 
-def render(name, description, rs):
-    rules = surge_rules(rs)
-    write_if_changed(
-        SURGE_DIR / f"{name}.list",
-        header(name, description, "Surge RULE-SET", rs, "#"),
-        rules,
-    )
-    write_if_changed(
-        SURGE_DIR / f"{name}_Domain.list",
-        header(name, description, "Surge DOMAIN-SET", rs, "#"),
-        surge_domain_set(rs),
-    )
-    write_if_changed(
-        CLASH_DIR / f"{name}.yaml",
-        header(name, description, "Clash rule-provider, behavior: classical", rs, "#"),
-        clash_payload(rules),
-    )
-    write_if_changed(
-        CLASH_DIR / f"{name}_Domain.yaml",
-        header(name, description, "Clash rule-provider, behavior: domain", rs, "#"),
-        clash_payload(clash_domain(rs)),
-    )
-    write_if_changed(
-        CLASH_DIR / f"{name}_IP.yaml",
-        header(name, description, "Clash rule-provider, behavior: ipcidr", rs, "#"),
-        clash_payload(clash_ipcidr(rs)),
-    )
+def render(name, description, rs, sections=None):
+    """Write all five formats. `sections` splits the body into commented vendor blocks."""
+    sections = sections or [(None, None, rs)]
+    outputs = [
+        (SURGE_DIR / f"{name}.list", "Surge RULE-SET", surge_rules, False),
+        (SURGE_DIR / f"{name}_Domain.list", "Surge DOMAIN-SET", surge_domain_set, False),
+        (CLASH_DIR / f"{name}.yaml", "Clash rule-provider, behavior: classical", surge_rules, True),
+        (CLASH_DIR / f"{name}_Domain.yaml", "Clash rule-provider, behavior: domain", clash_domain, True),
+        (CLASH_DIR / f"{name}_IP.yaml", "Clash rule-provider, behavior: ipcidr", clash_ipcidr, True),
+    ]
+    for path, fmt, fn, is_clash in outputs:
+        body = sectioned(fn, sections)
+        if is_clash:
+            body = clash_payload(body)
+        write_if_changed(path, header(name, description, fmt, rs, "#"), body)
 
 
 def previous_count(name):
     body = body_of(SURGE_DIR / f"{name}.list")
-    return len(body) if body else 0
+    return sum(1 for l in body if is_rule(l)) if body else 0
 
 
 # ---------------------------------------------------------------- README
@@ -418,11 +462,13 @@ def main():
     if agg and not failed:
         log(f"[{agg['name']}]")
         rs = RuleSet()
-        for _, _, part in built:
+        sections = []
+        for vname, vdesc, part in built:
+            part = part.subtract(rs)
             rs.update(part)
-        rs.normalize(cfg.get("global_deny_suffix", []))
+            sections.append((vname, vdesc, part))
         log(f"  total: {len(surge_rules(rs))} rules")
-        render(agg["name"], agg["description"], rs)
+        render(agg["name"], agg["description"], rs, sections)
         built.append((agg["name"], agg["description"], rs))
     elif agg:
         warn(f"{agg['name']}: skipped because {', '.join(failed)} failed")

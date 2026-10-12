@@ -1,7 +1,7 @@
 # NAME: AI
 # DESC: All vendors above combined
 # FORMAT: Clash rule-provider, behavior: domain
-# UPDATED: 2026-10-12 10:37:33 UTC
+# UPDATED: 2026-10-12 10:55:51 UTC
 # DOMAIN-SUFFIX: 66
 # DOMAIN: 29
 # DOMAIN-KEYWORD: 1
@@ -9,24 +9,58 @@
 # IP-CIDR6: 2
 # SOURCE: https://github.com/v2fly/domain-list-community, RIPEstat, vendor docs
 payload:
-  - '+.claude.ai'
-  - '+.meta.ai'
-  - '+.perplexity.ai'
-  - '+.pplx.ai'
-  - '+.x.ai'
+  # ============================================================
+  # OpenAI
+  # OpenAI: ChatGPT, Sora, Codex, OpenAI API
+  # ============================================================
   - '+.chatgpt.livekit.cloud'
   - '+.host.livekit.cloud'
   - '+.turn.livekit.cloud'
-  - '+.anthropic.com'
   - '+.chat.com'
   - '+.chatgpt.com'
+  - '+.crixet.com'
+  - '+.oaistatic.com'
+  - '+.oaistatsig.com'
+  - '+.oaiusercontent.com'
+  - '+.openai.com'
+  - '+.sora.com'
+  - '+.openai.com.cdn.cloudflare.net'
+  - '+.chatgpt.site'
+  - 'openaiapi-site.azureedge.net'
+  - 'production-openaicom-storage.azureedge.net'
+  - 'openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net'
+  - 'openaicom.imgix.net'
+  - 'openaiassets.blob.core.windows.net'
+  - 'openaicomproductionae4b.blob.core.windows.net'
+
+  # ============================================================
+  # Anthropic
+  # Anthropic: Claude, Claude Code, Claude API
+  # ============================================================
+  - '+.claude.ai'
+  - '+.anthropic.com'
   - '+.claude.com'
   - '+.claudemcpclient.com'
   - '+.claudemcpcontent.com'
   - '+.claudeusercontent.com'
-  - '+.crixet.com'
+  - '+.clau.de'
+  - '+.claude.dev'
+  - 'servd-anthropic-website.b-cdn.net'
+
+  # ============================================================
+  # xAI
+  # xAI: Grok, Grok API
+  # ============================================================
+  - '+.x.ai'
+  - '+.grok.com'
+  - '+.grokipedia.com'
+  - '+.grok.x.com'
+
+  # ============================================================
+  # Gemini
+  # Google: Gemini, AI Studio, NotebookLM, DeepMind, Jules, Antigravity
+  # ============================================================
   - '+.deepmind.com'
-  - '+.githubcopilot.com'
   - '+.aistudio.google.com'
   - '+.bard.google.com'
   - '+.flow.google.com'
@@ -45,21 +79,8 @@ payload:
   - '+.labstailwind.pa.googleapis.com'
   - '+.proactivebackend-pa.googleapis.com'
   - '+.robinfrontend-pa.googleapis.com'
-  - '+.grok.com'
-  - '+.grokipedia.com'
   - '+.gemini.gstatic.com'
-  - '+.llama.com'
-  - '+.copilot.microsoft.com'
-  - '+.oaistatic.com'
-  - '+.oaistatsig.com'
-  - '+.oaiusercontent.com'
-  - '+.openai.com'
-  - '+.perplexity.com'
-  - '+.sora.com'
   - '+.stitch.withgoogle.com'
-  - '+.grok.x.com'
-  - '+.clau.de'
-  - '+.claude.dev'
   - '+.antigravity-unleash.goog'
   - '+.antigravity.google'
   - '+.deepmind.google'
@@ -71,18 +92,7 @@ payload:
   - '+.notebook.google'
   - '+.notebooklm.google'
   - '+.opal.google'
-  - '+.copilot.cloud.microsoft'
-  - '+.openai.com.cdn.cloudflare.net'
-  - '+.chatgpt.site'
   - '+.ai.studio'
-  - 'ppl-ai-file-upload.s3.amazonaws.com'
-  - 'edgeservices.bing.com'
-  - 'sydney.bing.com'
-  - 'pplx-res.cloudinary.com'
-  - 'copilot-workspace.githubnext.com'
-  - 'copilot-proxy.githubusercontent.com'
-  - 'copilot-telemetry.githubusercontent.com'
-  - 'copilot-telemetry-service.githubusercontent.com'
   - 'geminiweb-pa.clients.google.com'
   - 'alkalicore-pa.clients6.google.com'
   - 'alkalimakersuite-pa.clients6.google.com'
@@ -96,11 +106,35 @@ payload:
   - 'notebooklm.googleapis.com'
   - 'notebooklm-pa.googleapis.com'
   - 'ai.google.dev'
-  - 'openaiapi-site.azureedge.net'
-  - 'production-openaicom-storage.azureedge.net'
-  - 'openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net'
-  - 'servd-anthropic-website.b-cdn.net'
-  - 'openaicom.imgix.net'
+
+  # ============================================================
+  # Perplexity
+  # Perplexity AI
+  # ============================================================
+  - '+.perplexity.ai'
+  - '+.pplx.ai'
+  - '+.perplexity.com'
+  - 'ppl-ai-file-upload.s3.amazonaws.com'
+  - 'pplx-res.cloudinary.com'
+
+  # ============================================================
+  # Copilot
+  # Microsoft Copilot and GitHub Copilot
+  # ============================================================
+  - '+.githubcopilot.com'
+  - '+.copilot.microsoft.com'
+  - '+.copilot.cloud.microsoft'
+  - 'edgeservices.bing.com'
+  - 'sydney.bing.com'
+  - 'copilot-workspace.githubnext.com'
+  - 'copilot-proxy.githubusercontent.com'
+  - 'copilot-telemetry.githubusercontent.com'
+  - 'copilot-telemetry-service.githubusercontent.com'
   - 'copilotprodattachments.blob.core.windows.net'
-  - 'openaiassets.blob.core.windows.net'
-  - 'openaicomproductionae4b.blob.core.windows.net'
+
+  # ============================================================
+  # MetaAI
+  # Meta AI and Llama
+  # ============================================================
+  - '+.meta.ai'
+  - '+.llama.com'
