@@ -1,8 +1,8 @@
 # NAME: AI
 # DESC: All vendors above combined
 # FORMAT: Clash rule-provider, behavior: classical
-# UPDATED: 2026-10-12 10:55:51 UTC
-# DOMAIN-SUFFIX: 66
+# UPDATED: 2026-10-17 21:18:27 UTC
+# DOMAIN-SUFFIX: 67
 # DOMAIN: 29
 # DOMAIN-KEYWORD: 1
 # IP-CIDR: 2
@@ -25,6 +25,7 @@ payload:
   - 'DOMAIN-SUFFIX,openai.com'
   - 'DOMAIN-SUFFIX,sora.com'
   - 'DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net'
+  - 'DOMAIN-SUFFIX,openai.org'
   - 'DOMAIN-SUFFIX,chatgpt.site'
   - 'DOMAIN,openaiapi-site.azureedge.net'
   - 'DOMAIN,production-openaicom-storage.azureedge.net'

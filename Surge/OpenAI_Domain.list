@@ -1,8 +1,8 @@
 # NAME: OpenAI
 # DESC: OpenAI: ChatGPT, Sora, Codex, OpenAI API
 # FORMAT: Surge DOMAIN-SET
-# UPDATED: 2026-10-12 10:37:18 UTC
-# DOMAIN-SUFFIX: 13
+# UPDATED: 2026-10-17 21:18:25 UTC
+# DOMAIN-SUFFIX: 14
 # DOMAIN: 6
 # DOMAIN-KEYWORD: 1
 # IP-CIDR: 0
@@ -20,6 +20,7 @@
 .openai.com
 .sora.com
 .openai.com.cdn.cloudflare.net
+.openai.org
 .chatgpt.site
 openaiapi-site.azureedge.net
 production-openaicom-storage.azureedge.net
