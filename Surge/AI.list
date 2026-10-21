@@ -1,8 +1,8 @@
 # NAME: AI
 # DESC: All vendors above combined
 # FORMAT: Surge RULE-SET
-# UPDATED: 2026-10-17 21:18:27 UTC
-# DOMAIN-SUFFIX: 67
+# UPDATED: 2026-10-21 22:11:03 UTC
+# DOMAIN-SUFFIX: 77
 # DOMAIN: 29
 # DOMAIN-KEYWORD: 1
 # IP-CIDR: 2
@@ -39,13 +39,23 @@ DOMAIN-KEYWORD,chatgpt-async-webps-prod-
 # Anthropic: Claude, Claude Code, Claude API
 # ============================================================
 DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,claude.app
 DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,chatbotclaude.com
 DOMAIN-SUFFIX,claude.com
+DOMAIN-SUFFIX,claudeacademy.com
 DOMAIN-SUFFIX,claudemcpclient.com
 DOMAIN-SUFFIX,claudemcpcontent.com
+DOMAIN-SUFFIX,claudestudio.com
 DOMAIN-SUFFIX,claudeusercontent.com
 DOMAIN-SUFFIX,clau.de
+DOMAIN-SUFFIX,ant.dev
+DOMAIN-SUFFIX,antspace.dev
 DOMAIN-SUFFIX,claude.dev
+DOMAIN-SUFFIX,claudepages.dev
+DOMAIN-SUFFIX,claude.new
+DOMAIN-SUFFIX,claude.site
+DOMAIN-SUFFIX,anthropic.team
 DOMAIN,servd-anthropic-website.b-cdn.net
 IP-CIDR,160.79.104.0/23,no-resolve
 IP-CIDR6,2607:6bc0::/48,no-resolve
